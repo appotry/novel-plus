@@ -13,11 +13,9 @@ https://201206030.github.io
 
 #### 新项目：小说精品屋-微服务版
 
-基于小说精品屋-plus构建的Spring Cloud 微服务小说门户平台。
+#### 学习版
 
-GitHub仓库地址： https://github.com/201206030/novel-cloud
-
-Gitee仓库地址： https://gitee.com/novel_dev_team/novel-cloud
+[基于 Spring Boot 3 + Vue 3 开发的前后端分离学习型小说项目。](https://github.com/201206030/novel)
 
 #### 演示地址
 
