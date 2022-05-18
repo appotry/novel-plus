@@ -11,8 +11,6 @@
 
 https://201206030.github.io
 
-#### 新项目：小说精品屋-微服务版
-
 #### 学习版
 
 [基于 Spring Boot 3 + Vue 3 开发的前后端分离学习型小说项目。](https://github.com/201206030/novel)
