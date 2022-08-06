@@ -189,6 +189,16 @@ novel-plus -- 父工程
 
 [点此查看](https://xxyopen.com/2022/07/18/doc/novel-plus/install/bt.html)
 
+## Docker Compose 一键部署
+
+[点此查看](https://www.xxyopen.com/2022/07/18/doc/novel-plus/install/docker.html)
+
+## 升级指南
+
+[当前版本 < v3.6.1 点此查看](https://www.xxyopen.com/2022/07/18/doc/novel-plus/install/oldupdate.html)
+
+[当前版本 >= v3.6.1 点此查看](https://www.xxyopen.com/2022/07/18/doc/novel-plus/install/newupdate.html)
+
 ## 增值服务
 
 [点此查看](https://novel.xxyopen.com/service.htm)
