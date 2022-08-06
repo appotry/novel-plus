@@ -20,9 +20,9 @@ https://novel.xxyopen.com
 
 [GitHub](https://github.com/201206030/novel-cloud) | [码云](https://gitee.com/novel_dev_team/novel-cloud)
 
-## 演示地址
+## 演示站点
 
-[点击前往](http://47.106.243.172:8888/)
+[点此前往](http://47.106.243.172:8888/)
 
 ## 项目介绍
 
