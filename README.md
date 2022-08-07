@@ -189,6 +189,10 @@ novel-plus -- 父工程
 
 [点此查看](https://xxyopen.com/2022/07/18/doc/novel-plus/install/bt.html)
 
+## Docker 安装
+
+[点此查看](https://www.xxyopen.com/2022/08/07/doc/novel-plus/install/base_docker.html)
+
 ## Docker Compose 一键部署
 
 [点此查看](https://www.xxyopen.com/2022/07/18/doc/novel-plus/install/docker.html)
