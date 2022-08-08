@@ -203,6 +203,10 @@ novel-plus -- 父工程
 
 [当前版本 >= v3.6.1 点此查看](https://www.xxyopen.com/2022/07/18/doc/novel-plus/install/newupdate.html)
 
+## 答疑
+
+为了方便管理和查阅，有问题请在相应安装或升级教程的评论区留言，谢谢大家的配合！
+
 ## 增值服务
 
 [点此查看](https://novel.xxyopen.com/service.htm)
