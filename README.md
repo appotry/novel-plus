@@ -8,13 +8,13 @@
     <a href="https://github.com/201206030/novel-plus"><img src="https://visitor-badge.glitch.me/badge?page_id=201206030.novel-plus" alt="visitors"></a>
 </p>
 
+<p align="center">
+      👉<a href='https://docs.xxyopen.com/course/novelplus/'>项目文档</a>  |  <a href='https://novel.xxyopen.com'>👉官网</a>  |  <a href='http://47.106.243.172:8888'>👉演示站点</a>
+</p> 
+
 ## 学习版
 
 [基于 Spring Boot 3 + Vue 3 开发的前后端分离学习型小说项目](https://github.com/201206030/novel)
-
-## 项目文档
-
-➡️ [点此查看](https://docs.xxyopen.com/course/novelplus/)
 
 ## 项目介绍
 
@@ -170,7 +170,7 @@ novel-plus -- 父工程
 
 ## 增值服务
 
-➡️ [点此查看](https://novel.xxyopen.com/service.htm)
+👉 [立即查看](https://novel.xxyopen.com/service.htm)
 
 ## 代码仓库
 
@@ -180,7 +180,7 @@ Gitee 仓库地址： https://gitee.com/novel_dev_team/novel-plus
 
 ## QQ 交流群
 
-➡️ [点此前往官网查看](https://novel.xxyopen.com/service.htm)
+👉 [立即查看](https://novel.xxyopen.com/service.htm)
 
 ## 微信交流群
 
@@ -190,7 +190,7 @@ Gitee 仓库地址： https://gitee.com/novel_dev_team/novel-plus
 
 发布最新更新动态、最新前端模版、最新爬虫规则、文档教程等。
 
-![img](https://youdoc.github.io/img/qrcode_for_gh.jpg)
+![](https://youdoc.github.io/img/qrcode_for_gh.jpg)
 
 ## 赞赏支持
 
@@ -201,7 +201,7 @@ Gitee 仓库地址： https://gitee.com/novel_dev_team/novel-plus
 - 发布更多前端模版和爬虫规则
 - 一杯咖啡
 
-![img](https://s1.ax1x.com/2020/10/31/BUQJwq.png)
+![](https://s1.ax1x.com/2020/10/31/BUQJwq.png)
 
 ## 免责声明
 
