@@ -24,6 +24,10 @@ https://novel.xxyopen.com
 
 [点此前往](http://47.106.243.172:8888/)
 
+## 项目文档
+
+[点此前往](https://docs.xxyopen.com/course/novelplus/)
+
 ## 项目介绍
 
 novel-plus 是一个多端（PC、WAP）阅读，功能完善的原创文学 CMS
@@ -176,44 +180,9 @@ novel-plus -- 父工程
 
 ![QQ图片20191018161901](https://s3.ax1x.com/2020/12/27/r5Fe0A.png)
 
-
-## 源码安装教程
-
-[点此查看](http://xxyopen.com/2022/07/18/doc/novel-plus/install/source.html)
-
-## 包安装教程
-
-[点此查看](https://xxyopen.com/2022/07/18/doc/novel-plus/install/package.html)
-
-## 宝塔安装教程
-
-[点此查看](https://xxyopen.com/2022/07/18/doc/novel-plus/install/bt.html)
-
-## Docker 安装
-
-[点此查看](https://www.xxyopen.com/2022/08/07/doc/novel-plus/install/base_docker.html)
-
-## Docker Compose 一键部署
-
-[点此查看](https://www.xxyopen.com/2022/07/18/doc/novel-plus/install/docker.html)
-
-## 升级指南
-
-[当前版本 < v3.6.1 点此查看](https://www.xxyopen.com/2022/07/18/doc/novel-plus/install/oldupdate.html)
-
-[当前版本 >= v3.6.1 点此查看](https://www.xxyopen.com/2022/07/18/doc/novel-plus/install/newupdate.html)
-
-## 答疑
-
-为了方便管理和查阅，安装/升级过程中遇到任何问题请在相应安装/升级教程的评论区留言，谢谢大家的配合！
-
 ## 增值服务
 
 [点此查看](https://novel.xxyopen.com/service.htm)
-
-## 更多
-
-- [谷歌搜索](https://www.google.com/search?q=%E5%B0%8F%E8%AF%B4%E7%B2%BE%E5%93%81%E5%B1%8B)
 
 ## 代码仓库
 
@@ -223,7 +192,7 @@ Gitee 仓库地址： https://gitee.com/novel_dev_team/novel-plus
 
 ## QQ 交流群
 
-[点击前往官网查看](https://xiongxyang.gitee.io/service.htm)
+[点击前往官网查看](https://novel.xxyopen.com/service.htm)
 
 ## 微信交流群
 
