@@ -22,11 +22,11 @@ https://novel.xxyopen.com
 
 ## 演示站点
 
-[点此前往](http://47.106.243.172:8888/)
+➡️ [点此前往](http://47.106.243.172:8888/)
 
 ## 项目文档
 
-[点此前往](https://docs.xxyopen.com/course/novelplus/)
+➡️ [点此查看](https://docs.xxyopen.com/course/novelplus/)
 
 ## 项目介绍
 
@@ -192,15 +192,15 @@ Gitee 仓库地址： https://gitee.com/novel_dev_team/novel-plus
 
 ## QQ 交流群
 
-[点击前往官网查看](https://novel.xxyopen.com/service.htm)
+➡️ [点此前往官网查看](https://novel.xxyopen.com/service.htm)
 
 ## 微信交流群
 
-微信群人数超过 200 人不能分享二维码，请关注公众号“**xxyopen**”回复关键词“**微信群**”。
+微信群人数已超 200 人无法分享二维码，请关注公众号“**xxyopen**”回复关键词“**微信群**”。
 
 ## 微信公众号
 
-发布最新更新资讯、最新前端模版、最新爬虫规则、文档教程等。
+发布最新更新动态、最新前端模版、最新爬虫规则、文档教程等。
 
 ![img](https://youdoc.github.io/img/qrcode_for_gh.jpg)
 
