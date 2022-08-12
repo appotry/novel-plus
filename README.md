@@ -8,21 +8,9 @@
     <a href="https://github.com/201206030/novel-plus"><img src="https://visitor-badge.glitch.me/badge?page_id=201206030.novel-plus" alt="visitors"></a>
 </p>
 
-## 官网
-
-https://novel.xxyopen.com
-
 ## 学习版
 
 [基于 Spring Boot 3 + Vue 3 开发的前后端分离学习型小说项目](https://github.com/201206030/novel)
-
-## 微服务版
-
-[GitHub](https://github.com/201206030/novel-cloud) | [码云](https://gitee.com/novel_dev_team/novel-cloud)
-
-## 演示站点
-
-➡️ [点此前往](http://47.106.243.172:8888/)
 
 ## 项目文档
 
@@ -182,7 +170,7 @@ novel-plus -- 父工程
 
 ## 增值服务
 
-[点此查看](https://novel.xxyopen.com/service.htm)
+➡️ [点此查看](https://novel.xxyopen.com/service.htm)
 
 ## 代码仓库
 
