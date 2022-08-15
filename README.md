@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-      👉<a href='https://docs.xxyopen.com/course/novelplus/'>项目文档（安装教程）</a>  |  <a href='https://novel.xxyopen.com'>👉官网</a>  |  <a href='http://47.106.243.172:8888'>👉演示站点</a>
+      👉 <a href='https://novel.xxyopen.com'>官网</a>  |  👉 <a href='http://47.106.243.172:8888'>演示站点</a>  |  👉 <a href='https://docs.xxyopen.com/course/novelplus/'>项目文档（安装教程）</a>  |  
 </p> 
 
 ## 学习版
