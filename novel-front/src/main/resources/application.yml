@@ -23,7 +23,7 @@ xss:
   # 排除链接（多个用逗号分隔）
   excludes: /system/notice/*
   # 匹配链接 （多个用逗号分隔）
-  urlPatterns: /book/addBookComment,/user/addFeedBack,/author/addBook,/author/addBookContent,/author/updateBookContent,/author/register.html
+  urlPatterns: /book/addCommentReply,/book/addBookComment,/user/addFeedBack,/author/addBook,/author/addBookContent,/author/updateBookContent,/author/register.html
 
 
 author:
@@ -48,13 +48,17 @@ book:
 spring:
   ai:
     openai:
-      api-key: sk-nnhjmxuljagcuubbovjztbhkiawqaabzziazeurppinxtgva
+      image:
+        enabled: true
+        base-url: https://api.siliconflow.cn
+        api-key: sk-jjtixmivxaccndqgkqfkbgkzvmbctdxogcrfbjzfttbouitt
+        options:
+          model: Kwai-Kolors/Kolors
+          response_format: URL
+      api-key: sk-jjtixmivxaccndqgkqfkbgkzvmbctdxogcrfbjzfttbouitt
       base-url: https://api.siliconflow.cn
       chat:
         options:
-          model: deepseek-ai/DeepSeek-R1-Distill-Llama-8B
-
-
-
+          model: deepseek-ai/DeepSeek-R1-0528-Qwen3-8B
 
 

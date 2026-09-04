@@ -1,23 +1,35 @@
 package com.java2nb.novel.core.cache.impl;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.java2nb.novel.core.cache.CacheService;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.redis.core.RedisTemplate;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
  * @author xxy
  */
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class RedisServiceImpl implements CacheService {
 
     private final StringRedisTemplate stringRedisTemplate;
 
-    private final RedisTemplate<Object, Object> redisTemplate;
+    private ObjectMapper objectMapper;
+
+    @PostConstruct
+    public void init() {
+        objectMapper = new ObjectMapper();
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    }
 
 
     @Override
@@ -37,34 +49,66 @@ public class RedisServiceImpl implements CacheService {
     }
 
     @Override
-    public Object getObject(String key) {
-        return redisTemplate.opsForValue().get(key);
+    public <T> T getObject(String key, Class<T> clazz) {
+        String result = get(key);
+        if (result != null) {
+            try {
+                return objectMapper.readValue(result, clazz);
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public <T> List<T> getList(String key, Class<T> clazz) {
+        String result = get(key);
+        if (result != null) {
+            try {
+                return objectMapper.readValue(result,
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, clazz));
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return null;
     }
 
     @Override
     public void setObject(String key, Object value) {
-        redisTemplate.opsForValue().set(key, value);
+        if (value != null) {
+            try {
+                set(key, objectMapper.writeValueAsString(value));
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @Override
     public void setObject(String key, Object value, long timeout) {
-        redisTemplate.opsForValue().set(key, value, timeout, TimeUnit.SECONDS);
+        if (value != null) {
+            try {
+                set(key, objectMapper.writeValueAsString(value), timeout);
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @Override
     public void del(String key) {
-        redisTemplate.delete(key);
         stringRedisTemplate.delete(key);
     }
 
     @Override
     public boolean contains(String key) {
-        return redisTemplate.hasKey(key) || stringRedisTemplate.hasKey(key);
+        return stringRedisTemplate.hasKey(key);
     }
 
     @Override
     public void expire(String key, long timeout) {
-        redisTemplate.expire(key, timeout, TimeUnit.SECONDS);
         stringRedisTemplate.expire(key, timeout, TimeUnit.SECONDS);
     }
 

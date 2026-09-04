@@ -38,6 +38,17 @@
         </where>
     </select>
 
+    <select id="listByIndexIds" resultType="com.java2nb.novel.domain.BookContentDO">
+        select `id`,`index_id`,`content` from book_content
+        where index_id in (
+        <foreach item="item" index="index" collection="indexIds" separator=",">
+            #{item}
+        </foreach>
+        )
+
+
+    </select>
+
     <insert id="save" parameterType="com.java2nb.novel.domain.BookContentDO">
         insert into book_content
         (`id`,

@@ -3154,3 +3154,63 @@ where menu_id = 104;
 delete
 from sys_menu
 where menu_id = 57;
+
+
+alter table book_comment add column location varchar(50) DEFAULT NULL COMMENT '地理位置' after comment_content ;
+
+
+alter table crawl_single_task add column crawl_chapters int DEFAULT 0 COMMENT '采集章节数量' after exc_count ;
+
+
+DROP TABLE IF EXISTS `book_comment_reply`;
+CREATE TABLE `book_comment_reply`
+(
+    `id`             bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `comment_id`     bigint(20)   DEFAULT NULL COMMENT '评论ID',
+    `reply_content`  varchar(512) DEFAULT NULL COMMENT '回复内容',
+    `location` varchar(50) DEFAULT NULL COMMENT '地理位置',
+    `audit_status`   tinyint(1)   DEFAULT '0' COMMENT '审核状态，0：待审核，1：审核通过，2：审核不通过',
+    `create_time`    datetime     DEFAULT NULL COMMENT '回复用户ID',
+    `create_user_id` bigint(20)   DEFAULT NULL COMMENT '回复时间',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='小说评论回复表';
+
+
+INSERT INTO crawl_source (source_name, crawl_rule, source_status, create_time
+                         , update_time)
+VALUES ('飘天文学网（海外专用）', '{
+    "bookListUrl": "https://www.piaotia.com/booksort{catId}/{page}.html",
+    "catIdRule": {
+        "catId1": "1/0",
+        "catId2": "2/0",
+        "catId3": "3/0",
+        "catId4": "4/0",
+        "catId5": "6/0",
+        "catId6": "5/0"
+    },
+    "bookIdPatten": "href=\\"https://www.piaotia.com/bookinfo/(\\\\d+/\\\\d+).html\\"",
+    "pagePatten": "<em\\\\s+id=\\"pagestats\\">(\\\\d+)/\\\\d+</em>",
+    "totalPagePatten": "<em\\\\s+id=\\"pagestats\\">\\\\d+/(\\\\d+)</em>",
+    "bookDetailUrl": "https://www.piaotia.com/bookinfo/{bookId}.html",
+    "bookNamePatten": "<h1>([^/]+)</h1>",
+    "authorNamePatten": "<td\\\\s+width=\\"\\\\d+%\\">作&nbsp;&nbsp;&nbsp; 者：([^/]+)<",
+    "picUrlPatten": "<img\\\\s+src=\\"(https://www.piaotia.com/files/article/image/[^\\"]+)\\"",
+    "statusPatten": "<td>文章状态：([^/]+)</td>",
+    "bookStatusRule": {
+        "连载中": 0,
+        "已完成": 1
+    },
+    "descStart": " <span class=\\"hottext\\">内容简介：</span><br />",
+    "descEnd": "</td>",
+    "filterDesc": "",
+    "bookIndexUrl": "https://www.piaotia.com/html/{bookId}/index.html",
+    "indexIdPatten": "<li><a href=\\"(\\\\d+).html\\">[^/]+</a></li>",
+    "indexNamePatten": "<li><a href=\\"\\\\d+.html\\">([^/]+)</a></li>",
+    "bookContentUrl": "https://www.piaotia.com/html/{bookId}/{indexId}.html",
+    "contentStart": "<br>",
+    "contentEnd": "</div>",
+    "filterContent": "",
+    "charset": "gbk"
+}', 0, '2025-07-13 18:57:39'
+       , '2025-07-13 18:57:39');

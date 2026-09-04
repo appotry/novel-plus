@@ -1,5 +1,7 @@
 package com.java2nb.system.dao;
 
+import com.java2nb.common.annotation.SanitizeMap;
+
 import com.java2nb.system.domain.DataPermDO;
 
 import java.util.List;
@@ -19,7 +21,7 @@ public interface DataPermDao {
 
 	DataPermDO get(Long id);
 	
-	List<DataPermDO> list(Map<String,Object> map);
+	List<DataPermDO> list(@SanitizeMap Map<String,Object> map);
 	
 	int count(Map<String,Object> map);
 	

@@ -9,7 +9,7 @@ import com.java2nb.novel.service.FriendLinkService;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -31,7 +31,7 @@ public class FriendLinkController {
     @Autowired
     private FriendLinkService friendLinkService;
     @Autowired
-    private RedisTemplate<Object, Object> redisTemplate;
+    private StringRedisTemplate redisTemplate;
 
     @GetMapping()
     @RequiresPermissions("novel:friendLink:friendLink")

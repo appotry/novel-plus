@@ -36,16 +36,16 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<News> listIndexNews() {
-        List<News> result = (List<News>) cacheService.getObject(CacheKey.INDEX_NEWS_KEY);
-        if(result == null || result.size() == 0) {
-            SelectStatementProvider selectStatement = select(id, catName, catId, title,createTime)
-                    .from(news)
-                    .orderBy(createTime.descending())
-                    .limit(2)
-                    .build()
-                    .render(RenderingStrategies.MYBATIS3);
+        List<News> result = cacheService.getList(CacheKey.INDEX_NEWS_KEY, News.class);
+        if (result == null || result.isEmpty()) {
+            SelectStatementProvider selectStatement = select(id, catName, catId, title, createTime)
+                .from(news)
+                .orderBy(createTime.descending())
+                .limit(2)
+                .build()
+                .render(RenderingStrategies.MYBATIS3);
             result = newsMapper.selectMany(selectStatement);
-            cacheService.setObject(CacheKey.INDEX_NEWS_KEY,result,60 * 60 * 12);
+            cacheService.setObject(CacheKey.INDEX_NEWS_KEY, result, 60 * 60 * 12);
         }
         return result;
     }
@@ -53,25 +53,25 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public News queryNewsInfo(Long newsId) {
         SelectStatementProvider selectStatement = select(news.allColumns())
-                .from(news)
-                .where(id,isEqualTo(newsId))
-                .build()
-                .render(RenderingStrategies.MYBATIS3);
+            .from(news)
+            .where(id, isEqualTo(newsId))
+            .build()
+            .render(RenderingStrategies.MYBATIS3);
         return newsMapper.selectMany(selectStatement).get(0);
 
     }
 
     @Override
     public PageBean<News> listByPage(int page, int pageSize) {
-        PageHelper.startPage(page,pageSize);
-        SelectStatementProvider selectStatement = select(id, catName, catId, title,createTime)
-                .from(news)
-                .orderBy(createTime.descending())
-                .build()
-                .render(RenderingStrategies.MYBATIS3);
+        PageHelper.startPage(page, pageSize);
+        SelectStatementProvider selectStatement = select(id, catName, catId, title, createTime)
+            .from(news)
+            .orderBy(createTime.descending())
+            .build()
+            .render(RenderingStrategies.MYBATIS3);
         List<News> news = newsMapper.selectMany(selectStatement);
         PageBean<News> pageBean = PageBuilder.build(news);
-        pageBean.setList(BeanUtil.copyList(news,NewsVO.class));
+        pageBean.setList(BeanUtil.copyList(news, NewsVO.class));
         return pageBean;
     }
 

@@ -2,22 +2,20 @@ package com.java2nb.novel.controller;
 
 import com.java2nb.novel.core.bean.UserDetails;
 import com.java2nb.novel.core.enums.ResponseStatus;
-import com.java2nb.novel.entity.Book;
-import com.java2nb.novel.entity.BookCategory;
-import com.java2nb.novel.entity.BookComment;
-import com.java2nb.novel.entity.BookIndex;
+import com.java2nb.novel.core.utils.IpUtil;
+import com.java2nb.novel.entity.*;
 import com.java2nb.novel.service.BookContentService;
 import com.java2nb.novel.service.BookService;
-import com.java2nb.novel.vo.BookCommentVO;
-import com.java2nb.novel.vo.BookSettingVO;
-import com.java2nb.novel.vo.BookSpVO;
-import com.java2nb.novel.vo.BookVO;
+import com.java2nb.novel.service.IpLocationService;
+import com.java2nb.novel.service.LikeService;
+import com.java2nb.novel.vo.*;
 import io.github.xxyopen.model.page.PageBean;
 import io.github.xxyopen.model.page.builder.pagehelper.PageBuilder;
 import io.github.xxyopen.model.resp.RestResult;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -37,11 +35,15 @@ public class BookController extends BaseController {
 
     private final Map<String, BookContentService> bookContentServiceMap;
 
+    private final IpLocationService ipLocationService;
+
+    private final LikeService likeService;
+
     /**
      * 查询首页小说设置列表数据
      */
     @GetMapping("listBookSetting")
-    public RestResult<Map<Byte, List<BookSettingVO>>> listBookSetting() {
+    public RestResult<Map<String, List<BookSettingVO>>> listBookSetting() {
         return RestResult.ok(bookService.listBookSettingVO());
     }
 
@@ -81,7 +83,7 @@ public class BookController extends BaseController {
      * 分页搜索
      */
     @GetMapping("searchByPage")
-    public RestResult<?> searchByPage(BookSpVO bookSP, @RequestParam(value = "curr", defaultValue = "1") int page,
+    public RestResult<?> searchByPage(@Validated BookSpVO bookSP, @RequestParam(value = "curr", defaultValue = "1") int page,
         @RequestParam(value = "limit", defaultValue = "20") int pageSize) {
         return RestResult.ok(bookService.searchByPage(bookSP, page, pageSize));
     }
@@ -150,6 +152,16 @@ public class BookController extends BaseController {
     }
 
     /**
+     * 分页查询评论回复列表
+     */
+    @GetMapping("listCommentReplyByPage")
+    public RestResult<PageBean<BookCommentReplyVO>> listCommentReplyByPage(@RequestParam("commentId") Long commentId,
+        @RequestParam(value = "curr", defaultValue = "1") int page,
+        @RequestParam(value = "limit", defaultValue = "5") int pageSize) {
+        return RestResult.ok(bookService.listCommentReplyByPage(null, commentId, page, pageSize));
+    }
+
+    /**
      * 新增评价
      */
     @PostMapping("addBookComment")
@@ -158,8 +170,71 @@ public class BookController extends BaseController {
         if (userDetails == null) {
             return RestResult.fail(ResponseStatus.NO_LOGIN);
         }
+        comment.setLocation(ipLocationService.getLocation(IpUtil.getRealIp(request)));
         bookService.addBookComment(userDetails.getId(), comment);
         return RestResult.ok();
+    }
+
+    /**
+     * 评价点赞/取消点赞
+     */
+    @PostMapping("toggleCommentLike")
+    public RestResult<?> toggleCommentLike(Long commentId, HttpServletRequest request) {
+        UserDetails userDetails = getUserDetails(request);
+        if (userDetails == null) {
+            return RestResult.fail(ResponseStatus.NO_LOGIN);
+        }
+        return RestResult.ok(likeService.toggleCommentLike(commentId, userDetails.getId()));
+    }
+
+    /**
+     * 评价点踩/取消点踩
+     */
+    @PostMapping("toggleCommentUnLike")
+    public RestResult<?> toggleCommentUnLike(Long commentId, HttpServletRequest request) {
+        UserDetails userDetails = getUserDetails(request);
+        if (userDetails == null) {
+            return RestResult.fail(ResponseStatus.NO_LOGIN);
+        }
+        return RestResult.ok(likeService.toggleCommentUnLike(commentId, userDetails.getId()));
+    }
+
+    /**
+     * 新增回复
+     */
+    @PostMapping("addCommentReply")
+    public RestResult<?> addCommentReply(BookCommentReply commentReply, HttpServletRequest request) {
+        UserDetails userDetails = getUserDetails(request);
+        if (userDetails == null) {
+            return RestResult.fail(ResponseStatus.NO_LOGIN);
+        }
+        commentReply.setLocation(ipLocationService.getLocation(IpUtil.getRealIp(request)));
+        bookService.addBookCommentReply(userDetails.getId(), commentReply);
+        return RestResult.ok();
+    }
+
+    /**
+     * 回复点赞/取消点赞
+     */
+    @PostMapping("toggleReplyLike")
+    public RestResult<?> toggleReplyLike(Long replyId, HttpServletRequest request) {
+        UserDetails userDetails = getUserDetails(request);
+        if (userDetails == null) {
+            return RestResult.fail(ResponseStatus.NO_LOGIN);
+        }
+        return RestResult.ok(likeService.toggleReplyLike(replyId, userDetails.getId()));
+    }
+
+    /**
+     * 回复点赞/取消点赞
+     */
+    @PostMapping("toggleReplyUnLike")
+    public RestResult<?> toggleReplyUnLike(Long replyId, HttpServletRequest request) {
+        UserDetails userDetails = getUserDetails(request);
+        if (userDetails == null) {
+            return RestResult.fail(ResponseStatus.NO_LOGIN);
+        }
+        return RestResult.ok(likeService.toggleReplyUnLike(replyId, userDetails.getId()));
     }
 
     /**

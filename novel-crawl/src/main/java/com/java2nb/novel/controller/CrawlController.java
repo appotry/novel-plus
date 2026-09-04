@@ -72,17 +72,15 @@ public class CrawlController {
         if(url.startsWith("https://")||url.startsWith("http://")){
             String refreshCache="1";
             if(!refreshCache.equals(isRefresh)) {
-                Object cache = cacheService.getObject(CacheKey.BOOK_TEST_PARSE + url);
-                if (cache == null) {
+                html = cacheService.get(CacheKey.BOOK_TEST_PARSE + url);
+                if (html == null) {
                     isRefresh="1";
-                }else {
-                    html = (String) cache;
                 }
             }
             if(refreshCache.equals(isRefresh)){
                 html = HttpUtil.getByHttpClientWithChrome(url);
                 if (html != null) {
-                    cacheService.setObject(CacheKey.BOOK_TEST_PARSE + url, html, 60 * 10);
+                    cacheService.set(CacheKey.BOOK_TEST_PARSE + url, html, 60 * 10);
                 }else{
                     resultMap.put("msg","html is null");
                     return RestResult.ok(resultMap);
@@ -151,6 +149,14 @@ public class CrawlController {
         crawlService.delCrawlSingleTask(id);
 
         return RestResult.ok();
+    }
+
+    /**
+     * 采集任务进度查询
+     * */
+    @GetMapping("getTaskProgress/{id}")
+    public RestResult<Integer> getTaskProgress(@PathVariable("id") Long id){
+        return RestResult.ok(crawlService.getTaskProgress(id));
     }
 
 

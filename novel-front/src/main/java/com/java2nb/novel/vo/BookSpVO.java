@@ -1,5 +1,6 @@
 package com.java2nb.novel.vo;
 
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 import java.util.Date;
@@ -29,9 +30,8 @@ public class BookSpVO {
 
     private Long updatePeriod;
 
+    @Pattern(regexp = "^(last_index_update_time|word_count|visit_count)$")
     private String sort;
-
-
 
 
 }

@@ -1,5 +1,7 @@
 package com.java2nb.novel.dao;
 
+import com.java2nb.common.annotation.SanitizeMap;
+
 import com.java2nb.novel.domain.CategoryDO;
 
 import java.util.List;
@@ -18,7 +20,7 @@ public interface CategoryDao {
 
 	CategoryDO get(Integer id);
 	
-	List<CategoryDO> list(Map<String,Object> map);
+	List<CategoryDO> list(@SanitizeMap Map<String,Object> map);
 	
 	int count(Map<String,Object> map);
 	

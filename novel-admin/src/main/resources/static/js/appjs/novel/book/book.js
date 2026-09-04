@@ -143,10 +143,14 @@ function load() {
                         field: 'id',
                         align: 'center',
                         formatter: function (value, row, index) {
+                            // 增加下载按钮
+                            var d = '<a class="btn btn-primary btn-sm" href="#" mce_href="#" title="下载TXT" onclick="downloadBook(\''
+                                + row.id
+                                + '\',\'' + row.bookName + '\')"><i class="fa fa-cloud-download"></i></a><br><br> ';
                             var r = '<a class="btn btn-warning btn-sm ' + s_remove_h + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
                                 + row.id
                                 + '\')"><i class="fa fa-remove"></i></a> ';
-                            return r;
+                            return d + r;
                         }
                     }
 
@@ -249,4 +253,9 @@ function batchRemove() {
     }, function () {
 
     });
+}
+
+function downloadBook(bookId, bookName) {
+    window.open(prefix + '/download?bookId='+bookId+'&bookName='+bookName);
+
 }

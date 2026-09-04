@@ -43,7 +43,7 @@
     </select>
 
     <select id="count" resultType="int">
-        select count(*) from book_setting t1 inner join book t2 on t1.book_id = t2.id
+        select count(*) from book_setting t1
         <where>
             <if test="id != null and id != ''">and t1.id = #{id}</if>
             <if test="bookId != null and bookId != ''">and t1.book_id = #{bookId}</if>

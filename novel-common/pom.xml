@@ -5,7 +5,7 @@
     <parent>
         <artifactId>novel</artifactId>
         <groupId>com.java2nb</groupId>
-        <version>5.0.1-SNAPSHOT</version>
+        <version>5.3.3</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -20,6 +20,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Aop 相关 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
         <dependency>
@@ -129,6 +135,30 @@
 
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <zip destfile='${project.build.directory}/build/sql.zip'>
+                                    <zipfileset filemode="755" dir='${basedir}/../doc/sql'/>
+                                </zip>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>

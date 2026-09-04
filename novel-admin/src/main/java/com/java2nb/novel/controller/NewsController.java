@@ -9,7 +9,7 @@ import com.java2nb.novel.service.NewsService;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +32,7 @@ public class NewsController {
     @Autowired
     private NewsService newsService;
     @Autowired
-    private RedisTemplate<Object, Object> redisTemplate;
+    private StringRedisTemplate redisTemplate;
 
     @GetMapping()
     @RequiresPermissions("novel:news:news")

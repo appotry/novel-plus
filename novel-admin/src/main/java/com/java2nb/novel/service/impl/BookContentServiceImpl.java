@@ -1,5 +1,6 @@
 package com.java2nb.novel.service.impl;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +52,10 @@ public class BookContentServiceImpl implements BookContentService {
 	public int batchRemove(Long[] ids){
 		return bookContentDao.batchRemove(ids);
 	}
-	
+
+	@Override
+	public List<BookContentDO> listByIndexIds(List<Long> indexIds) {
+		return bookContentDao.listByIndexIds(indexIds);
+	}
+
 }
